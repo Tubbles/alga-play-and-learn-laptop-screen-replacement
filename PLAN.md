@@ -12,9 +12,10 @@ The Alga (Swedish toy brand, BRIO group) "Play & Learn" kids laptop has a broken
 
 ## Status
 
+- 2026-07-31: Triage resolved by owner: cracked glass from a drop/impact. The panel must be replaced (or the whole unit); no cheap contact/backlight fix applies. Gate 1 passed, working options A–E.
 - 2026-07-31: Project started. Three research tracks running: product identification (exact model, OEM origin, screen tech, teardowns, spare-part channels), Swedish second-hand market scan (Tradera/Blocket/Sellpy/eBay + new-unit price), and generic toy-LCD repair/replacement landscape. Awaiting results and first info from owner.
 
-## Step 0 — Triage (do this before committing to any option)
+## Step 0 — Triage — RESOLVED 2026-07-31: cracked glass (drop/impact), panel replacement required
 
 "Broken LCD" covers several different failures, and some of them do not need a new panel at all:
 
@@ -26,7 +27,7 @@ The Alga (Swedish toy brand, BRIO group) "Play & Learn" kids laptop has a broken
 | Rainbow/dark stains but glass intact | Damaged polarizer film | Replaceable film, cheap |
 | Completely blank, no damage visible | Could be electronics, not the panel | Needs diagnosis before buying anything |
 
-Needed from owner (one batch): photos of the unit powered on showing the fault, the back/bottom label (model + article/EAN numbers), and a note on how it broke (dropped? sat on? just stopped?).
+Owner confirmed 2026-07-31: cracked glass / ink blots after a drop or impact. Rows 2–5 of the table are ruled out. Still needed from owner (one batch): photo of the back/bottom label (model name + article/EAN numbers) for product identification, and a photo of the open unit showing the screen.
 
 ## Options, easiest first
 
