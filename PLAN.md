@@ -10,11 +10,23 @@ The Alga (Swedish toy brand, BRIO group) "Play & Learn" kids laptop has a broken
 - Owner does physical tasks (photos, teardown, probing) in batched sessions — collect everything needed per session up front so each session counts.
 - Every decision goes in [LOG.md](LOG.md).
 
-## Status
+## Status (2026-07-31 — research phase complete)
 
-- 2026-07-31: Repair-landscape research done → [research/lcd-replacement-landscape.md](research/lcd-replacement-landscape.md). Product candidate: **"Alga Laptop SE/FI"** (ages 3–6, "6″ LCD-skärm med bakgrundsbelysning", 45 activities, 3×AAA — [babyland.se](https://www.babyland.se/alga_laptop_sefi)); owner to confirm against the unit's label. Screen is *likely* mono passive-matrix from an anonymous OEM (inference from power budget and price class, unverified). Key consequence for us: with cracked glass, everything hinges on whether the teardown reveals a swappable module with a searchable part number (→ option C) or custom glass driven raw by a blob ASIC (→ options collapse to A/B or E; D only works if a discrete controller protocol exists on a flex). No Alga-specific teardown exists online.
-- 2026-07-31: Triage resolved by owner: cracked glass from a drop/impact. The panel must be replaced (or the whole unit); no cheap contact/backlight fix applies. Gate 1 passed, working options A–E.
-- 2026-07-31: Project started. Three research tracks running: product identification (exact model, OEM origin, screen tech, teardowns, spare-part channels), Swedish second-hand market scan (Tradera/Blocket/Sellpy/eBay + new-unit price), and generic toy-LCD repair/replacement landscape. Awaiting results and first info from owner.
+All three research tracks are done: [product identification](research/product-identification.md), [second-hand market scan](research/second-hand-market-scan.md), [LCD repair landscape](research/lcd-replacement-landscape.md). Where we stand:
+
+- **Product identified: ALGA Play & Learn Laptop** ("Alga Laptop SE/FI", article 38114300, model TA006-1-XX, EAN 7070398092652, released 2011, bilingual SE/FI, 3×AAA). Discontinued at every retailer (last price 399–499 SEK). Owner's label photo will confirm the variant.
+- **Screen: monochrome passive-matrix dot-matrix LCD with switchable backlight** (per the official manual: contrast trim, backlight toggle key, 1-bit activity graphics). Resolution, active area, construction, and part numbers unknown — no public teardown exists; ours will be the first.
+- **Triage (owner): cracked glass from a drop** — panel or whole unit must be replaced.
+- **Option A lead:** one Tradera auction (seller "Sayma", Uppsala) ended 2026-07-02 **unsold at 110 kr opening bid**; the seller is still active on Tradera and likely still has the unit. Item appears second-hand only rarely; expected price 100–200 kr. Blocket/Sellpy/Facebook Marketplace are login-walled — owner check needed. A Norwegian FINN.no listing exists (possibly a non-Swedish language variant — fine as screen donor, not as whole-unit swap).
+- **Option B weakened:** manufacturer-of-record Scanditoy AB was liquidated in 2014; BRIO officially sells no spare parts. Only a long-shot ask via Alga's contact form remains.
+- **OEM unidentified** despite fingerprint searches — no known rebadge to source parts from until the teardown yields part numbers.
+
+## Next actions
+
+1. **Owner (one ~2 min session):** photo of the back/bottom label and of the open unit showing the screen — confirms variant, ends speculation about the screen window vs. active area.
+2. **Owner decision:** hunt a donor unit now? Concretely: set a Tradera saved search ("alga laptop", "alga lärdator"), optionally message seller Sayma about the unsold 110 kr unit, and glance at Blocket/Sellpy/FB Marketplace (all need your logins; messaging the seller needs your explicit go-ahead per ground rules).
+3. **Owner (one longer session, ~20–30 min, whenever it suits):** teardown — open the unit, photograph mainboard, panel front/back, every silkscreen/flex/glass marking. This decides options C/D/E definitively and is worth doing even if a donor shows up (documents the repair for the next person; ours would be the first public teardown of this toy).
+4. **Claude:** on teardown photos — hunt part numbers; on donor decision — prep a saved-search/contact text for approval.
 
 ## Step 0 — Triage — RESOLVED 2026-07-31: cracked glass (drop/impact), panel replacement required
 
@@ -34,13 +46,13 @@ Owner confirmed 2026-07-31: cracked glass / ink blots after a drop or impact. Ro
 
 Work down this list; stop at the first one that pans out.
 
-### A. Buy a complete second-hand unit
+### A. Buy a complete second-hand unit — CURRENT FRONT-RUNNER
 
-Swap the whole toy, or transplant its screen (or whole mainboard+screen) into the existing chassis if the original has sentimental value. Sources: Tradera, Blocket, Sellpy, Facebook Marketplace, eBay; buying a *new* unit is the price ceiling if it is still sold. Near-zero tinker time, biggest question is availability. Market scan in progress.
+Swap the whole toy, or transplant its screen into the existing chassis. Scan result: discontinued new (no price ceiling to buy at), rare second-hand, expected 100–200 kr when one appears. Concrete lead: Tradera seller **Sayma (Uppsala)**, auction ended 2026-07-02 unsold at 110 kr + 49 kr shipping, "gott använt skick", seller still active on Tradera. Plus one FINN.no listing (language variant unconfirmed). Blocket, Sellpy, and Facebook Marketplace are unchecked (login walls) — owner glance needed. Strategy: saved search + optionally message the Uppsala seller (owner approval required for any contact/purchase).
 
-### B. Spare part from Alga/BRIO customer service
+### B. Spare part from Alga/BRIO customer service — LONG SHOT
 
-Toy makers sometimes ship replacement units or parts cheaply, especially within warranty-friendly Nordic consumer law. One email costs almost nothing. Contact channel being researched. (Sending the email requires owner approval per ground rules.)
+Research result: manufacturer-of-record Scanditoy AB liquidated 2014; BRIO's official policy is no spare parts, warranty via retailer. Alga still hosts the product's manual (re-uploaded Sept 2024), so a polite ask via [algaspel.se/kundservice](https://algaspel.se/kundservice/) costs five minutes and might reach someone with a warehouse remnant — but expect nothing. (Sending requires owner approval per ground rules.)
 
 ### C. Identical replacement LCD module
 
@@ -56,7 +68,7 @@ Keep the chassis and keyboard, replace screen and electronics (e.g. Pi + generic
 
 ## Decision gates
 
-1. **Triage result** (owner photos): if the fault is contact/backlight/polarizer → fix directly, skip A–E.
-2. **Market scan result**: if a used unit exists at a sane price → recommend purchase (owner approves), done on arrival.
-3. **Service channel result**: if Alga/BRIO answer with a part or unit → done.
-4. **Teardown findings**: panel part number searchable → option C; recognizable controller only → option D; heatseal custom glass, no matches → option E or accept a used-unit-only strategy (watch marketplaces).
+1. ~~**Triage result**~~ — PASSED 2026-07-31: cracked glass, panel replacement required.
+2. **Donor unit found at sane price** (saved searches, Sayma, login-walled marketplaces): owner approves → buy → done on arrival. No unit purchasable as of 2026-07-31.
+3. **Service channel** (only if owner wants to fire off the form): Alga answer with a part or unit → done. Expectation set to "no".
+4. **Teardown findings**: panel part number searchable → option C; recognizable controller protocol only → option D; heatseal custom glass or blob-driven raw glass with no matches → option E or accept a donor-only strategy (keep marketplace watches running).
