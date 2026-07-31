@@ -12,6 +12,7 @@ The Alga (Swedish toy brand, BRIO group) "Play & Learn" kids laptop has a broken
 
 ## Status
 
+- 2026-07-31: Repair-landscape research done → [research/lcd-replacement-landscape.md](research/lcd-replacement-landscape.md). Product candidate: **"Alga Laptop SE/FI"** (ages 3–6, "6″ LCD-skärm med bakgrundsbelysning", 45 activities, 3×AAA — [babyland.se](https://www.babyland.se/alga_laptop_sefi)); owner to confirm against the unit's label. Screen is *likely* mono passive-matrix from an anonymous OEM (inference from power budget and price class, unverified). Key consequence for us: with cracked glass, everything hinges on whether the teardown reveals a swappable module with a searchable part number (→ option C) or custom glass driven raw by a blob ASIC (→ options collapse to A/B or E; D only works if a discrete controller protocol exists on a flex). No Alga-specific teardown exists online.
 - 2026-07-31: Triage resolved by owner: cracked glass from a drop/impact. The panel must be replaced (or the whole unit); no cheap contact/backlight fix applies. Gate 1 passed, working options A–E.
 - 2026-07-31: Project started. Three research tracks running: product identification (exact model, OEM origin, screen tech, teardowns, spare-part channels), Swedish second-hand market scan (Tradera/Blocket/Sellpy/eBay + new-unit price), and generic toy-LCD repair/replacement landscape. Awaiting results and first info from owner.
 
@@ -43,15 +44,15 @@ Toy makers sometimes ship replacement units or parts cheaply, especially within 
 
 ### C. Identical replacement LCD module
 
-Open the unit, read every part number (panel glass silkscreen, flex print, mainboard silkscreen, controller ICs), and hunt for the exact module on AliExpress/eBay/LCSC/Taobao. Toy laptops are usually rebadged OEM designs sold under many brands, so the panel may be commodity. Requires one owner teardown session with good photos; soldering may be zero (connector) or moderate (heatseal flex = likely dead end, decided at inspection).
+Open the unit, read every part number (panel glass silkscreen, flex print, mainboard silkscreen, controller ICs), and hunt for the exact module on AliExpress/eBay/Taobao (LCSC is a long shot for mono modules; panelook only if it turns out to be a branded module or TFT). Toy laptops are usually rebadged OEM designs sold under many brands, so the panel may be commodity; even an internal-looking number on the glass is worth searching verbatim. Requires one owner teardown session with good photos; soldering may be zero (connector) or moderate. Heatseal-flex-bonded or blob-driven raw glass = this option dies at inspection (ACF re-bonding is specialist territory).
 
 ### D. Electrically compatible panel + adaptation
 
-If the exact module is gone but the controller family is identifiable, a same-controller same-resolution panel can work. May require logic-analyzer capture of the panel bus (owner session) to confirm interface and init sequence. Meaningful effort — only if A–C fail and the toy is worth it.
+Only possible if the mainboard talks a *controller protocol* to the panel (some toy laptops do, e.g. VTech PreComputer 2000 uses an HD44780); if the blob ASIC drives raw glass with multiplexed waveforms there is nothing to adapt to and this option is dead. Confirming which case applies needs a logic-analyzer capture on the panel connection (owner session, sigrok/PulseView). Precedent exists for protocol-bridging to a modern panel via a microcontroller (Kerry Wong's Uniden LCD reverse-engineering). Meaningful effort — only if A–C fail and the toy is worth it. Generic ~6″ mono modules do exist if the protocol matches (5.7″ 320×240 RA8835 class; a 6″ 320×240 NT7086 module at displaymodule.com is dimensionally closest).
 
 ### E. Retrofit / brain transplant
 
-Keep the chassis, replace screen and electronics (e.g. microcontroller or Pi + generic TFT re-implementing some play-and-learn games). Fun project but by far the most owner time; explicitly last resort given the time constraint.
+Keep the chassis and keyboard, replace screen and electronics (e.g. Pi + generic 5″ HDMI touchscreen re-implementing some play-and-learn games; the original educational firmware is lost). Well-trodden path — see the PinkPad VTech conversion and similar builds linked in the research notes. Fun project but by far the most owner time; explicitly last resort given the time constraint.
 
 ## Decision gates
 
